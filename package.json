@@ -1,6 +1,6 @@
 {
   "name": "storage-wrapper",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "A small utility for working with localStorage and sessionStorage in the browser",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

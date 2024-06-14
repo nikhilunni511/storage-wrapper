@@ -10,5 +10,5 @@
     "declaration": true,
     "sourceMap": true
   },
-  "include": ["src/**/*", "test/**/*"]
+  "include": ["src/index.ts",]
 }

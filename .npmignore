@@ -1,0 +1,12 @@
+# Exclude source files
+src/
+tests/
+
+# Exclude configuration files
+tsconfig.json
+babel.config.js
+
+# Exclude any other non-essential files or folders
+node_modules/
+*.log
+*.md  # Markdown files, if not needed

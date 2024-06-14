@@ -1,12 +1,13 @@
 {
   "name": "storage-wrapper",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "A small utility for working with localStorage and sessionStorage in the browser",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",

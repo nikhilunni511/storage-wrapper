@@ -72,6 +72,12 @@ sessionStorageWrapper.clear();
 
 - Clears all items within the namespace or all items if no namespace is specified.
 
+## Demo
+Check out the [demo](https://storage-wrapper-demo.vercel.app/).
+
+## Contributing
+This project is open to contributions. Feel free to open an issue or submit a pull request.
+
 ## License
 
 MIT

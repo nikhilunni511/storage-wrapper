@@ -1,5 +1,5 @@
 {
-  "name": "storagemaster",
+  "name": "storage-wrapper",
   "version": "0.0.1",
   "description": "A small utility for working with localStorage and sessionStorage in the browser",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nikhilunni511/storagemaster.git"
+    "url": "https://github.com/nikhilunni511/storage-wrapper.git"
   },
   "keywords": [
     "localStorage",

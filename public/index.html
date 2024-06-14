@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StorageWrapper Test</title>
+    <script src="../dist/index.js"></script>
+</head>
+<body>
+    <h1>StorageWrapper Test</h1>
+    
+    <h2>LocalStorage</h2>
+    <input type="text" id="localStorageKey" placeholder="Key">
+    <input type="text" id="localStorageValue" placeholder="Value">
+    <button onclick="setLocalStorage()">Set LocalStorage</button>
+    <button onclick="getLocalStorage()">Get LocalStorage</button>
+    <button onclick="removeLocalStorage()">Remove LocalStorage</button>
+    <button onclick="clearLocalStorage()">Clear LocalStorage</button>
+    <div id="localStorageOutput"></div>
+
+    <h2>SessionStorage</h2>
+    <input type="text" id="sessionStorageKey" placeholder="Key">
+    <input type="text" id="sessionStorageValue" placeholder="Value">
+    <button onclick="setSessionStorage()">Set SessionStorage</button>
+    <button onclick="getSessionStorage()">Get SessionStorage</button>
+    <button onclick="removeSessionStorage()">Remove SessionStorage</button>
+    <button onclick="clearSessionStorage()">Clear SessionStorage</button>
+    <div id="sessionStorageOutput"></div>
+
+    <script>
+        const localStorageWrapper = new StorageMaster.StorageWrapper('local', 'myApp');
+        const sessionStorageWrapper = new StorageMaster.StorageWrapper('session', 'myApp');
+
+        function setLocalStorage() {
+            const key = document.getElementById('localStorageKey').value;
+            const value = document.getElementById('localStorageValue').value;
+            localStorageWrapper.set(key, value);
+            document.getElementById('localStorageOutput').innerText = `Set ${key}: ${value}`;
+        }
+
+        function getLocalStorage() {
+            const key = document.getElementById('localStorageKey').value;
+            const value = localStorageWrapper.get(key);
+            document.getElementById('localStorageOutput').innerText = `Got ${key}: ${value}`;
+        }
+
+        function removeLocalStorage() {
+            const key = document.getElementById('localStorageKey').value;
+            localStorageWrapper.remove(key);
+            document.getElementById('localStorageOutput').innerText = `Removed ${key}`;
+        }
+
+        function clearLocalStorage() {
+            localStorageWrapper.clear();
+            document.getElementById('localStorageOutput').innerText = 'Cleared localStorage';
+        }
+
+        function setSessionStorage() {
+            const key = document.getElementById('sessionStorageKey').value;
+            const value = document.getElementById('sessionStorageValue').value;
+            sessionStorageWrapper.set(key, value);
+            document.getElementById('sessionStorageOutput').innerText = `Set ${key}: ${value}`;
+        }
+
+        function getSessionStorage() {
+            const key = document.getElementById('sessionStorageKey').value;
+            const value = sessionStorageWrapper.get(key);
+            document.getElementById('sessionStorageOutput').innerText = `Got ${key}: ${value}`;
+        }
+
+        function removeSessionStorage() {
+            const key = document.getElementById('sessionStorageKey').value;
+            sessionStorageWrapper.remove(key);
+            document.getElementById('sessionStorageOutput').innerText = `Removed ${key}`;
+        }
+
+        function clearSessionStorage() {
+            sessionStorageWrapper.clear();
+            document.getElementById('sessionStorageOutput').innerText = 'Cleared sessionStorage';
+        }
+    </script>
+</body>
+</html>

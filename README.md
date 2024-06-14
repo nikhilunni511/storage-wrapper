@@ -1,4 +1,4 @@
-# StorageMaster
+# StorageWaster
 
 A small utility for working with localStorage and sessionStorage in the browser, with support for type safety, expiration, and namespacing.
 
@@ -11,7 +11,7 @@ A small utility for working with localStorage and sessionStorage in the browser,
 ## Installation
 
 ```sh
-npm install storagemaster
+npm install storage-wrapper
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ npm install storagemaster
 ### TypeScript
 
 ```typescript
-import { StorageWrapper } from 'storagemaster';
+import { StorageWrapper } from 'storage-wrapper';
 
 const localStorageWrapper = new StorageWrapper('local', 'myApp');
 const sessionStorageWrapper = new StorageWrapper('session', 'myApp');

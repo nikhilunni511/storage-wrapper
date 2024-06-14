@@ -1,4 +1,7 @@
-# StorageWaster
+# StorageWrapper
+
+[![npm version](https://badge.fury.io/js/storage-wrapper.svg)](https://badge.fury.io/js/storage-wrapper)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A small utility for working with localStorage and sessionStorage in the browser, with support for type safety, expiration, and namespacing.
 

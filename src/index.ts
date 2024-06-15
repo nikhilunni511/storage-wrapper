@@ -1,25 +1,32 @@
-type Callback = (key: string, value?: any) => void;
+export type SWCallback = (key: string, value?: any) => void;
 
-interface Callbacks {
-  set?: Callback[];
-  remove?: Callback[];
-  clear?: Callback[];
-  expired?: Callback[];
+export type SWAction = 'set' | 'remove' | 'clear' | 'expired';
+
+interface SWCallbacks {
+  set?: Record<string, Function>;
+  remove?: Record<string, Function>;
+  clear?: Record<string, Function>;
+  expired?: Record<string, Function>;
 }
 
 export class StorageWrapper {
   private storage: Storage;
   private namespace: string;
-  private callbacks: Callbacks;
+  private callbacks: SWCallbacks;
 
   constructor(storageType: 'local' | 'session', namespace: string = '') {
     this.storage = storageType === 'local' ? localStorage : sessionStorage;
     this.namespace = namespace;
-    this.callbacks = { set: [], remove: [], clear: [], expired: [] };
+    this.callbacks = { set: {}, remove: {}, clear: {}, expired: {} };
   }
 
-  private executeCallbacks(event: keyof Callbacks, key: string, value?: any): void {
-    this.callbacks[event]?.forEach((callback) => callback(key, value));
+  private executeCallbacks(action: keyof SWCallbacks, key: string, value?: any): void {
+    const events = this.callbacks[action];
+    if (events) {
+      Object.keys(events).forEach((event) => {
+        events[event](key, value);
+      });
+    }
   }
 
   private getFullKey(key: string): string {
@@ -69,9 +76,19 @@ export class StorageWrapper {
     }
   }
 
-  on(event: keyof Callbacks, callback: Callback): void {
-    if (this.callbacks[event]) {
-      this.callbacks[event]!.push(callback);
+  on(action: SWAction, event: string, callback: string): void {
+    if(!this.callbacks[action]) {
+      this.callbacks[action] = {};
+    }
+    const func = new Function('return ' + callback);
+    this.callbacks[action] = {
+      [event]: func()
+    };
+  }
+
+  off(action: SWAction, event: string): void {
+    if (this.callbacks[action]) {
+      delete this.callbacks[action]?.[event];
     }
   }
 }

@@ -49,15 +49,15 @@ sessionStorageWrapper.clear();
 const storageWithEvents = new StorageWrapper('local', 'myApp');
 
 // Adding event listeners
-storageWithEvents.addEventListener('set', (key, value) => {
+storageWithEvents.on('set', 'print', (key, value) => {
   console.log(`Item set: ${key} = ${value}`);
 });
 
-storageWithEvents.addEventListener('remove', (key) => {
+storageWithEvents.on('remove', 'print', (key) => {
   console.log(`Item removed: ${key}`);
 });
 
-storageWithEvents.addEventListener('clear', () => {
+storageWithEvents.on('clear', 'print', () => {
   console.log('Storage cleared');
 });
 
@@ -97,6 +97,9 @@ storageWithEvents.clear(); // Console: Storage cleared
 #### `clear(): void`
 
 - Clears all items within the namespace or all items if no namespace is specified.
+
+#### `on(event: 'set' | 'remove' | 'clear' | 'expired', event_name: string, callback: (key?: string, value?: any) => void): void`
+
 
 ## Demo
 Check out the [demo](https://storage-wrapper-demo.vercel.app/).

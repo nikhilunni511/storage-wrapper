@@ -43,7 +43,33 @@ sessionStorageWrapper.remove('sessionID');
 localStorageWrapper.clear();
 sessionStorageWrapper.clear();
 ```
+### Event Listeners
 
+```js
+const storageWithEvents = new StorageWrapper('local', 'myApp');
+
+// Adding event listeners
+storageWithEvents.addEventListener('set', (key, value) => {
+  console.log(`Item set: ${key} = ${value}`);
+});
+
+storageWithEvents.addEventListener('remove', (key) => {
+  console.log(`Item removed: ${key}`);
+});
+
+storageWithEvents.addEventListener('clear', () => {
+  console.log('Storage cleared');
+});
+
+// Setting an item
+storageWithEvents.set('key', 'value'); // Console: Item set: key = value
+
+// Removing an item
+storageWithEvents.remove('key'); // Console: Item removed: key
+
+// Clearing storage
+storageWithEvents.clear(); // Console: Storage cleared
+```
 ## API
 
 ### `StorageWrapper`
